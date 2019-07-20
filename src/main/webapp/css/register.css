@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+.register {
+	margin: 0 auto;
+	margin-top:8%;
+	width: 500px;
+}
+
+.register p>label {
+	height: 42px;
+	width: 70px;
+	line-height: 42px;
+	color: #666;
+	font-weight: 700;
+	text-align: right;
+	margin: 10px;
+	display: inline-block;
+	border: 0;
+}
+
+.register p>input {
+	height: 30px;
+	width: 329px;
+	padding: 10px 10px;
+	margin: 10px;
+	border: 1px solid #ddd;
+	font-size: 14px;
+	color: #666;
+}
+
+#register_submit {
+	display: block;
+	width: 420px;
+	height: 60px;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 3px;
+	border: 0;
+	background-color: #3f89ec;
+	margin: 10px auto;
+}
+#register_submit:HOVER {
+	background-color:#3f89ecbf;
+}

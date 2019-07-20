@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+
+
+.mask_layer{
+	position:absolute;
+	top:0;
+	background-color:rgba(0,0,0,0.5);
+}
+
+.login {
+	width: 500px;
+	background-color: white;
+	padding-bottom: 30px;
+	border-radius: 20px;
+	display: none;
+	position: fixed;
+	top:15%;
+	left: 35%;
+}
+
+#deleteLogin{
+	width: 50px;
+	height: 50px;
+	font-size: 50px;
+	margin-left: 450px;
+	color: #ccc;
+	text-decoration: none;
+	cursor: pointer;
+}
+#deleteLogin:HOVER{
+	color: #333;
+}
+.login p>label {
+	height: 42px;
+	width: 70px;
+	line-height: 42px;
+	color: #666;
+	font-weight: 700;
+	text-align: right;
+	margin: 10px;
+	display: inline-block;
+	border: 0;
+}
+
+.login p>input {
+	height: 30px;
+	width: 329px;
+	padding: 10px 10px;
+	margin: 10px;
+	border: 1px solid #ddd;
+	font-size: 14px;
+	color: #666;
+}
+
+.login p>a {
+	text-decoration: none;
+	color: #3f89ec;
+	width:50px;
+	margin-left:220px;
+}
+
+.login p>a:HOVER {
+	color: #3f89ecbf;
+}
+
+#autoLogin {
+	margin: 0;
+	width: 20px;
+	height: 20px;
+	margin-left: 60px;
+	vertical-align: middle;
+}
+
+#auto {
+	margin: 0;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 9px;
+	color: #666;
+	font-weight: normal;
+}
+
+#login_submit {
+	display: block;
+	width: 420px;
+	height: 60px;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 3px;
+	border: 0;
+	background-color: #3f89ec;
+	margin: 10px auto;
+}
+#login_submit:HOVER {
+	background-color:#3f89ecbf;
+}
