@@ -13,7 +13,7 @@ import java.util.List;
  * @create 2019/7/20 16:30
  */
 public class TopicController {
-    @RequestMapping("/init.do")
+    @RequestMapping("/index.do")
     public String show(HttpServletRequest request) {
         ShowTopicService showTopicService=new ShowTopicService();
         List<Topic> list=showTopicService.show();
