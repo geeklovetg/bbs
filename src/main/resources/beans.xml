@@ -2,4 +2,5 @@
 <beans>
     <bean class="mvc.BizController"></bean>
     <bean class="controller.UserController"></bean>
+    <bean class="controller.TopicController"></bean>
 </beans>

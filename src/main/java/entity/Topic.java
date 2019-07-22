@@ -12,7 +12,7 @@ public class Topic {
     private int tsid;
     private int tuid;
     private String ttopic;
-    private String varchar;
+    private String tontents;
     private int treplycount;
     private int tclickcount;
     private Date tpublishtime;
@@ -25,7 +25,7 @@ public class Topic {
                 ", tsid=" + tsid +
                 ", tuid=" + tuid +
                 ", ttopic='" + ttopic + '\'' +
-                ", varchar='" + varchar + '\'' +
+                ", varchar='" + tontents + '\'' +
                 ", treplycount=" + treplycount +
                 ", tclickcount=" + tclickcount +
                 ", tpublishtime=" + tpublishtime +
@@ -37,12 +37,12 @@ public class Topic {
         return tid;
     }
 
-    public Topic(int tid, int tsid, int tuid, String ttopic, String varchar, int treplycount, int tclickcount, Date tpublishtime, Date tmodifytime) {
+    public Topic(int tid, int tsid, int tuid, String ttopic, String tcontent, int treplycount, int tclickcount, Date tpublishtime, Date tmodifytime) {
         this.tid = tid;
         this.tsid = tsid;
         this.tuid = tuid;
         this.ttopic = ttopic;
-        this.varchar = varchar;
+        this.tontents = tcontent;
         this.treplycount = treplycount;
         this.tclickcount = tclickcount;
         this.tpublishtime = tpublishtime;
@@ -77,12 +77,12 @@ public class Topic {
         this.ttopic = ttopic;
     }
 
-    public String getVarchar() {
-        return varchar;
+    public String getTcontents() {
+        return tontents;
     }
 
-    public void setVarchar(String varchar) {
-        this.varchar = varchar;
+    public void setTcontent(String tcontent) {
+        this.tontents = tcontent;
     }
 
     public int getTreplycount() {

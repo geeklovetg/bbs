@@ -37,14 +37,21 @@ public class DispatcherServlet extends HttpServlet {
         String target=mapping.execute(pth, request);
         System.out.println(target);
         //将目标页面名称前后增加JSP文件的位置和后缀
-        String sign = "sendRedirect:";
+        String redirect = "sendRedirect:";
+        String show = "show:";
         try {
             //重定向
-            if (target.startsWith(sign)) {
+            if (target.startsWith(redirect)) {
                 System.out.println("重定向");
                 String path =  target.substring(13) + ".jsp";
                 System.out.println(path);
                 response.sendRedirect(path);
+                return;
+            }
+            if (target.startsWith(show)) {
+                System.out.println("异步刷新数据");
+                String path =  target.substring(5) + ".jsp";
+                System.out.println(path);
                 return;
             }
             //转发,调用业务方法，根据业务方法的返回值转发到JSP

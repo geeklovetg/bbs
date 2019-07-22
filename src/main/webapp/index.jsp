@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="entity.Topic" %>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -11,12 +13,16 @@
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <!-- 设置HEAD的CSS文件 -->
 <link rel="stylesheet" type="text/css" href="css/head.css" />
+<!-- 设置CONTENTS的CSS文件 -->
+<link rel="stylesheet" type="text/css" href="css/contents_body.css" />
 <!-- 设置LOGIN的CSS文件 -->
 <link rel="stylesheet" type="text/css" href="css/login.css" />
+<!-- 设置BootStrap的CSS文件 -->
+  <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
   <script type="text/javascript">
-    $(function () {
-      window.onload=function(){
-        alert("页面加载")
+
+      /*window.onload=function(){
         $.ajax({
           url:"index.do",//请求的url地址
           dataType:"json",//返回的格式为json
@@ -24,18 +30,51 @@
           type:"GET",//请求的方式
           success:function(msg){console.log(msg)}//请求成功的处理
         });
-      }
-    })
+      }*/
+
 
   </script>
 </head>
 <body>
   <!-- 头部-即：导航条 -->
   <c:import url="include/head.jsp"/>
-
   <!-- 登录 -->
   <c:import url="include/login.jsp"/>
-  
+  <div class="all_content">
+    <div class="container">
+      <div class="row clearfix">
+        <div class="col-md-12 column">
+          <div class="row clearfix">
+            <div class="col-md-2 column">
+            </div>
+            <div class="col-md-8 column">
+              <%List<Topic> list =(List<Topic>) request.getAttribute("list");%>
+                <%for (Topic topic:list) {%>
+                <div class="topic_style">
+                <h2>
+                  <%=(topic.getTtopic())%>
+                </h2>
+                <p class="comment_inner">
+                  <%=(topic.getTcontents())%>
+                </p>
+                <p>
+                  <a class="btn" href="#">查看帖子 »</a>
+                </p>
+                </div>
+                <%}%>
+
+
+
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 设置JQ文件 -->
   <script type="text/javascript" src="jq/jquery-1.4.2.js"></script>
   <!-- 设置HEAD文件的JQ文件 -->

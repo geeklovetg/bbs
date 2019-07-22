@@ -2,7 +2,7 @@
 <div id="bg"></div>
 <div class="login">
   <a id="deleteLogin">×</a>
-  <form action="" method="post" >
+  <form action="" method="post">
     <p>
       <label for="name">用户名</label> <input id="name" name="name" type="text" placeholder="设置用户名(小于18字符)" required="required" maxlength="18">
     </p>

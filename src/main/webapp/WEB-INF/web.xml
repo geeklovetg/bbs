@@ -3,6 +3,11 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+  <welcome-file-list>
+
+    <welcome-file>init.do</welcome-file>
+
+  </welcome-file-list>
   <display-name>Archetype Created Web Application</display-name>
   <context-param>
     <param-name>javax.faces.CONFIG_FILES</param-name>
@@ -17,4 +22,5 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
+
 </web-app>

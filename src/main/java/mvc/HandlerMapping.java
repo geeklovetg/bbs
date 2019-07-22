@@ -60,6 +60,7 @@ public class HandlerMapping {
         Object controller = handler.getController();
         try {
             Object val = method.invoke(controller, request);
+            System.out.println("val："+val);
             String value=(String)val;
             return value;
         } catch (IllegalAccessException e) {

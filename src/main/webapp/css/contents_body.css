@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+.comment_inner {
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp: 3; /** 显示的行数 **/
+    overflow: hidden; /** 隐藏超出的内容 **/
+    display: -webkit-box;
+    z-index: -1;
+}
+
+.topic_style{
+    padding: 16px 24px;
+    border: 2px solid #f4f4f4;
+    margin-bottom: 18px;
+}
+
+.all_content{
+    margin-top: 50px;
+}
