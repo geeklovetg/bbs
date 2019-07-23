@@ -4,6 +4,7 @@ import dao.UserDao;
 import mvc.HandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 
 /**
  * @Author 极客浅风
@@ -15,6 +16,11 @@ public class RegisterService {
      * @param request
      */
     public int Reg(HttpServletRequest request) {
+        try {
+            request.setCharacterEncoding("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         String username = request.getParameter("userName");
         String password = request.getParameter("password");
         String nickName=request.getParameter("nickName");

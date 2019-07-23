@@ -43,7 +43,7 @@ public class DispatcherServlet extends HttpServlet {
             //重定向
             if (target.startsWith(redirect)) {
                 System.out.println("重定向");
-                String path =  target.substring(13) + ".jsp";
+                String path =  target.substring(13) + ".do";
                 System.out.println(path);
                 response.sendRedirect(path);
                 return;

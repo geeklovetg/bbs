@@ -18,7 +18,7 @@ public class TopicDao {
      * @return 返回topic对象集合
      */
     public List<Topic> ShowAllTopic() {
-        String sql="select * from topic";
+        String sql="select tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime from topic order by tpublishtime desc";
         try (Connection conn= DBUtil.getConnection()){
             PreparedStatement ps=conn.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
@@ -38,7 +38,7 @@ public class TopicDao {
      * 新增主题
      * @return
      */
-    public int CreateTopic(int tid, int tsid, int tuid, String ttopic, String tcontents, int treplycount, int tclickcount, Date tpublishtime, Date tmodifytime) {
+    public int CreateTopic(int tid, int tsid, int tuid, String ttopic, String tcontents, int treplycount, int tclickcount, Timestamp tpublishtime, Timestamp tmodifytime) {
         String sql="insert into topic (tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime) values(null,?,?,?,?,?,?,?,?)";
         try (Connection conn=DBUtil.getConnection()){
             PreparedStatement ps=conn.prepareStatement(sql);
@@ -48,8 +48,8 @@ public class TopicDao {
             ps.setString(4, tcontents);
             ps.setInt(5, treplycount);
             ps.setInt(6, tclickcount);
-            ps.setDate(7, tpublishtime);
-            ps.setDate(8, tmodifytime);
+            ps.setTimestamp(7, tpublishtime);
+            ps.setTimestamp(8, tmodifytime);
             int n=ps.executeUpdate();
             return n;
         } catch (Exception e) {
@@ -66,8 +66,29 @@ public class TopicDao {
         String tcontents=rs.getString("tcontents");
         int treplycount=rs.getInt("treplycount");
         int tclickcount=rs.getInt("tclickcount");
-        Date tpublishtime=rs.getDate("tpublishtime");
-        Date tmodifytime=rs.getDate("tmodifytime");
+        Timestamp tpublishtime=rs.getTimestamp("tpublishtime");
+        Timestamp tmodifytime=rs.getTimestamp("tmodifytime");
         return new Topic(tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime);
+    }
+
+    /**
+     * 根据用户id搜索帖子
+     * @return 返回帖子对象集合
+     */
+    public List<Topic> findAllByUid(int Uid) {
+        String sql="select tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime from topic where tuid=? order by tpublishtime desc";
+        try (Connection conn= DBUtil.getConnection()){
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setInt(1,Uid);
+            ResultSet rs=ps.executeQuery();
+            List<Topic> list=new ArrayList<Topic>();
+            while(rs.next()){
+                list.add(row2topic(rs));
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }

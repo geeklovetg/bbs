@@ -12,7 +12,7 @@ import java.util.List;
 * TopicDao Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>���� 20, 2019</pre> 
+* @since <pre>���� 22, 2019</pre> 
 * @version 1.0 
 */ 
 public class TopicDaoTest { 
@@ -32,20 +32,30 @@ public void after() throws Exception {
 */ 
 @Test
 public void testShowAllTopic() throws Exception { 
-//TODO: Test goes here...
-    TopicDao topicDao=new TopicDao();
-    List<Topic> list=topicDao.ShowAllTopic();
-    System.out.println(list);
+//TODO: Test goes here... 
 } 
 
 /** 
 * 
-* Method: CreateTopic(int tid, int tsid, int tuid, String ttopic, String tcontents, int treplycount, int tclickcount, Date tpublishtime, Date tmodifytime) 
+* Method: CreateTopic(int tid, int tsid, int tuid, String ttopic, String tcontents, int treplycount, int tclickcount, Timestamp tpublishtime, Timestamp tmodifytime) 
 * 
 */ 
 @Test
 public void testCreateTopic() throws Exception { 
 //TODO: Test goes here... 
+} 
+
+/** 
+* 
+* Method: findAllByUid(int Uid) 
+* 
+*/ 
+@Test
+public void testFindAllByUid() throws Exception { 
+//TODO: Test goes here...
+    TopicDao topicDao=new TopicDao();
+    List<Topic> list=topicDao.findAllByUid(12);
+    System.out.println(list);
 } 
 
 

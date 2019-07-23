@@ -2,6 +2,7 @@ package controller;
 
 import entity.Topic;
 import mvc.RequestMapping;
+import service.PublishService;
 import service.ShowTopicService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,5 +20,12 @@ public class TopicController {
         List<Topic> list=showTopicService.show();
         request.setAttribute("list",list);
         return "index";
+    }
+
+    @RequestMapping("/publish.do")
+    public String publish(HttpServletRequest request) {
+        PublishService publishService=new PublishService();
+        publishService.publishArtical(request);
+        return "sendRedirect:index";
     }
 }

@@ -1,5 +1,6 @@
 <%@ page import="entity.Topic" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -55,14 +56,28 @@
                   <%=(topic.getTtopic())%>
                 </h2>
                 <p class="comment_inner">
-                  <%=(topic.getTcontents())%>
+                  <%=(topic.getTcontent())%>
                 </p>
-                <p>
-                  <a class="btn" href="#">查看帖子 »</a>
-                </p>
+                  <p>
+                    <%=(topic.getTpublishtime()).toString().substring(0,19)%>
+                  </p>
                 </div>
                 <%}%>
-            </div>
+              <div>
+                <h4>发表新帖</h4>
+                <form action="publish.do" method="post">
+                  <input type="text" name="title" id="inputID" class="form-control" value="" title="" required="required" placeholder="请输入主题">
+                  <br>
+                  <textarea  name="content" id="" cols="104" rows="10" required="required"></textarea>
+                  <button type="submit" class="btn btn-block btn-lg btn-info">发帖子</button>
+                </form>
+
+              </div>
+
+
+
+              
+
 
 
           </div>
@@ -70,15 +85,13 @@
       </div>
     </div>
   </div>
-
+  </div>
   <!-- 设置JQ文件 -->
   <script type="text/javascript" src="jq/jquery-1.4.2.js"></script>
   <!-- 设置HEAD文件的JQ文件 -->
   <script type="text/javascript" src="jq/head.js"></script>
   <!-- 设置DELETELOGIN文件的JQ文件 -->
   <script type="text/javascript" src="jq/deleteLogin.js"></script>
-
-
   <script type="text/javascript" src="jq/login.js"></script>
 </body>
 </html>

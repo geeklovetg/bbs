@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="entity.Topic" %>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -29,16 +31,20 @@
                     <div class="col-md-2 column">
                     </div>
                     <div class="col-md-8 column">
-                        <h2>
-                            Heading
-                        </h2>
-                        <p>
-                            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                        </p>
-                        <p>
-                            <a class="btn" href="#">View details »</a>
-                        </p>
-                        <button type="button" class="btn btn-block btn-lg btn-info">发帖子</button>
+                        <%List<Topic> list =(List<Topic>) request.getAttribute("list");%>
+                        <%for (Topic topic:list) {%>
+                        <div class="topic_style">
+                            <h2>
+                                <%=(topic.getTtopic())%>
+                            </h2>
+                            <p class="comment_inner">
+                                <%=(topic.getTcontent())%>
+                            </p>
+                            <p>
+                                <%=(topic.getTpublishtime()).toString().substring(0,19)%>
+                            </p>
+                        </div>
+                        <%}%>
                     </div>
 
 

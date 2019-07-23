@@ -4,6 +4,7 @@ import dao.UserDao;
 import entity.User;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @Author 极客浅风
@@ -27,6 +28,13 @@ public class LoginService {
 
         if (user.getPassword().equals(password)) {
             request.setAttribute("msg","登陆成功！");
+            // 设置session 服务器端保存登录用户信息
+            HttpSession session = request.getSession(true);
+            // session是key-value格式
+            // 把user_id作为key,value是user对象
+            session.setAttribute("loginUser", user);
+            System.out.println(user);
+            System.out.println("设置sesion是保存用户登陆状态");
             return 1;
         }
 

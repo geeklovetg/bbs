@@ -9,7 +9,16 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String nickname;
     private String phoneNumber;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -30,19 +39,32 @@ public class User {
     public User() {
     }
 
-    public User(int uid, String username, String password, String email, String phoneNumber) {
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
+
+    public User(int uid, String username, String password, String email, String nickname, String phoneNumber) {
         this.uid = uid;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.nickname = nickname;
         this.phoneNumber = phoneNumber;
     }
 
-    public int getId() {
+    public int getUid() {
         return uid;
     }
 
-    public void setId(int id) {
+    public void setUid(int id) {
         this.uid = id;
     }
 
@@ -62,14 +84,5 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + uid +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
+
 }

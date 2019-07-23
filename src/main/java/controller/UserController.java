@@ -1,10 +1,12 @@
 package controller;
 
 import dao.UserDao;
+import entity.Topic;
 import entity.User;
 import mvc.RequestMapping;
 import service.LoginService;
 import service.RegisterService;
+import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -16,20 +18,6 @@ import java.util.Map;
  * @create 2019/7/17 19:01
  */
 public class UserController {
-    @RequestMapping("/list.do")
-    public String list(HttpServletRequest request) {
-        UserDao dao=new UserDao();
-        List<User> list = dao.findAll();
-        Map<String,String> names = new HashMap<>();
-        for (User user : list) {
-            names.put(user.getUsername(),user.getPassword());
-            System.out.println(user);
-        }
-        //利用request对象将数据共享但JSP页面
-        request.setAttribute("list", list);
-        request.setAttribute("names",names);
-        return "list";
-    }
 
     @RequestMapping("/login.do")
     public String login(HttpServletRequest request) {
@@ -37,7 +25,7 @@ public class UserController {
         int n=loginService.login(request);
         if (n==1) {
             System.out.println("登陆成功");
-            return "index";
+            return "sendRedirect:index";
         }
         return "login";
     }
@@ -51,5 +39,13 @@ public class UserController {
             return "sendRedirect:index";
         }
         return "register";
+    }
+
+    @RequestMapping("/mypage.do")
+    public String myPage(HttpServletRequest request) {
+        UserService userService=new UserService();
+        List<Topic> list=userService.ShowMyPage(request);
+        request.setAttribute("list",list);
+        return "mypage";
     }
 }

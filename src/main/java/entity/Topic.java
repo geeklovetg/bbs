@@ -1,5 +1,6 @@
 package entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -12,11 +13,17 @@ public class Topic {
     private int tsid;
     private int tuid;
     private String ttopic;
-    private String tontents;
+    private String tcontent;
     private int treplycount;
     private int tclickcount;
-    private Date tpublishtime;
-    private Date tmodifytime;
+    private Timestamp tpublishtime;
+    private Timestamp tmodifytime;
+
+
+
+    public int getTid() {
+        return tid;
+    }
 
     @Override
     public String toString() {
@@ -25,7 +32,7 @@ public class Topic {
                 ", tsid=" + tsid +
                 ", tuid=" + tuid +
                 ", ttopic='" + ttopic + '\'' +
-                ", varchar='" + tontents + '\'' +
+                ", tcontent='" + tcontent + '\'' +
                 ", treplycount=" + treplycount +
                 ", tclickcount=" + tclickcount +
                 ", tpublishtime=" + tpublishtime +
@@ -33,16 +40,12 @@ public class Topic {
                 '}';
     }
 
-    public int getTid() {
-        return tid;
-    }
-
-    public Topic(int tid, int tsid, int tuid, String ttopic, String tcontent, int treplycount, int tclickcount, Date tpublishtime, Date tmodifytime) {
+    public Topic(int tid, int tsid, int tuid, String ttopic, String tcontent, int treplycount, int tclickcount, Timestamp tpublishtime, Timestamp tmodifytime) {
         this.tid = tid;
         this.tsid = tsid;
         this.tuid = tuid;
         this.ttopic = ttopic;
-        this.tontents = tcontent;
+        this.tcontent = tcontent;
         this.treplycount = treplycount;
         this.tclickcount = tclickcount;
         this.tpublishtime = tpublishtime;
@@ -77,12 +80,12 @@ public class Topic {
         this.ttopic = ttopic;
     }
 
-    public String getTcontents() {
-        return tontents;
+    public String getTcontent() {
+        return tcontent;
     }
 
-    public void setTcontent(String tcontent) {
-        this.tontents = tcontent;
+    public void setTcontents(String tcontent) {
+        this.tcontent = tcontent;
     }
 
     public int getTreplycount() {
@@ -101,19 +104,19 @@ public class Topic {
         this.tclickcount = tclickcount;
     }
 
-    public Date getTpublishtime() {
+    public Timestamp getTpublishtime() {
         return tpublishtime;
     }
 
-    public void setTpublishtime(Date tpublishtime) {
+    public void setTpublishtime(Timestamp tpublishtime) {
         this.tpublishtime = tpublishtime;
     }
 
-    public Date getTmodifytime() {
+    public Timestamp getTmodifytime() {
         return tmodifytime;
     }
 
-    public void setTmodifytime(Date tmodifytime) {
+    public void setTmodifytime(Timestamp tmodifytime) {
         this.tmodifytime = tmodifytime;
     }
 }

@@ -44,7 +44,7 @@
       </p>
       <p>
         <label for="phone">手机</label>
-        <input id="phone" name="email" type="number" placeholder="请设置手机(等于11数字)" required="required" maxlength="11">
+        <input id="phone" name="phone" type="number" placeholder="请设置手机(等于11数字)" required="required" maxlength="11">
       </p>
       <p>
         <input type="submit" value="注册"  id="register_submit">

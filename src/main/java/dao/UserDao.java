@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class UserDao {
     public List<User> findAll() {
-        String sql = "select * from user";
+        String sql = "select uid,username,nickname,password,email,phone_number from user";
         try(Connection conn= DBUtil.getConnection()) {
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(sql);
@@ -60,21 +60,23 @@ public class UserDao {
         String password = null;
         String email = null;
         String phoneNumber=null;
+        String nickname=null;
         try {
             uid = rs.getInt("uid");
             name = rs.getString("username");
             password = rs.getString("password");
             email = rs.getString("email");
             phoneNumber = rs.getString("phone_number");
+            nickname=rs.getString("nickname");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        User user = new User(uid, name, password,email,phoneNumber);
+        User user = new User(uid, name, password,email,nickname,phoneNumber);
         return user;
     }
 
     public User findByName(String username) {
-        String sql = "select uid,username,password,email,phone_number from user where username=?";
+        String sql = "select uid,username,password,email,phone_number,nickname from user where username=?";
         try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,username);
