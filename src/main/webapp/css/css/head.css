@@ -1,7 +1,4 @@
 @CHARSET "UTF-8";
-@media screen and (min-width: 1366px) {
-	.navigation_bars{width: 100%;}
-}
 * {
 	margin: 0;
 	padding: 0;
@@ -24,14 +21,11 @@
 
 .navigation_bars>ul li {
 	float: left;
-	width: 56px;
+	width: 40px;
 	height: 60px;
 	text-align: center;
 	margin: 0px 5px;
 	display: block;
-	overflow:hidden;
-	white-space:nowrap;
-	text-overflow:ellipsis;
 }
 
 .navigation_bars>ul>li>a {

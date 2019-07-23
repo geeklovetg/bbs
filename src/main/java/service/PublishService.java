@@ -28,7 +28,7 @@ public class PublishService {
         // 定义当前时间
         //设置日期格式,并转转换成sql.date
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        int n=topicDao.CreateTopic(1,1,user.getUid(),request.getParameter("title"),request.getParameter("content"),0,0,timestamp,null);
+        int n=topicDao.CreateTopic(1,1,user.getUid(),request.getParameter("title"),request.getParameter("content"),0,0,timestamp,null,user.getNickname());
         return n;
     }
 }

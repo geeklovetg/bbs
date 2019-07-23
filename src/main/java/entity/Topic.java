@@ -18,11 +18,34 @@ public class Topic {
     private int tclickcount;
     private Timestamp tpublishtime;
     private Timestamp tmodifytime;
+    private String tauthor;
 
-
+    public Topic() {
+    }
 
     public int getTid() {
         return tid;
+    }
+
+    public Topic(int tid, int tsid, int tuid, String ttopic, String tcontent, int treplycount, int tclickcount, Timestamp tpublishtime, Timestamp tmodifytime, String tauthor) {
+        this.tid = tid;
+        this.tsid = tsid;
+        this.tuid = tuid;
+        this.ttopic = ttopic;
+        this.tcontent = tcontent;
+        this.treplycount = treplycount;
+        this.tclickcount = tclickcount;
+        this.tpublishtime = tpublishtime;
+        this.tmodifytime = tmodifytime;
+        this.tauthor = tauthor;
+    }
+
+    public String getTauthor() {
+        return tauthor;
+    }
+
+    public void setTauthor(String tauthor) {
+        this.tauthor = tauthor;
     }
 
     @Override
@@ -37,19 +60,8 @@ public class Topic {
                 ", tclickcount=" + tclickcount +
                 ", tpublishtime=" + tpublishtime +
                 ", tmodifytime=" + tmodifytime +
+                ", tauthor='" + tauthor + '\'' +
                 '}';
-    }
-
-    public Topic(int tid, int tsid, int tuid, String ttopic, String tcontent, int treplycount, int tclickcount, Timestamp tpublishtime, Timestamp tmodifytime) {
-        this.tid = tid;
-        this.tsid = tsid;
-        this.tuid = tuid;
-        this.ttopic = ttopic;
-        this.tcontent = tcontent;
-        this.treplycount = treplycount;
-        this.tclickcount = tclickcount;
-        this.tpublishtime = tpublishtime;
-        this.tmodifytime = tmodifytime;
     }
 
     public void setTid(int tid) {

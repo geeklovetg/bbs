@@ -1,9 +1,11 @@
 package service;
 
 import dao.UserDao;
+import entity.User;
 import mvc.HandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -30,4 +32,5 @@ public class RegisterService {
         int n=userDao.setUser(username,nickName,password,email,phoneNumber);
         return n;
     }
+
 }

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 public class LoginService {
     public int login(HttpServletRequest request) {
         //获取用户提交表单
-        String username = request.getParameter("name");
-        String password = request.getParameter("pwd");
+        String username = request.getParameter("userName");
+        String password = request.getParameter("password");
         System.out.println("用户请求登陆");
         //根据用户名查找对应的用户信息
         UserDao userDao=new UserDao();
@@ -32,9 +32,7 @@ public class LoginService {
             HttpSession session = request.getSession(true);
             // session是key-value格式
             // 把user_id作为key,value是user对象
-            session.setAttribute("loginUser", user);
-            System.out.println(user);
-            System.out.println("设置sesion是保存用户登陆状态");
+            session.setAttribute("user",user);
             return 1;
         }
 

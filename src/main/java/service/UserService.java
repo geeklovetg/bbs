@@ -17,15 +17,46 @@ public class UserService {
      * 显示个人帖子信息
      * @return 返回帖子对象集合
      */
-    public List<Topic> ShowMyPage(HttpServletRequest request) {
-        HttpSession httpSession=request.getSession(true);
-        User user=(User)httpSession.getAttribute("loginUser");
-        if (user==null) {
-            System.out.println("未获取到用户对象");
+    public List<Topic> showMyPage(HttpServletRequest request) {
+        User user = userConfirm(request);
+        if (user == null) {
             return null;
         }
         TopicDao topicDao=new TopicDao();
         List<Topic> list=topicDao.findAllByUid(user.getUid());
         return list;
+    }
+
+    /**
+     * 判断用户是否已登陆
+     * @param request
+     * @return 返回user对象或者null
+     */
+    public User userConfirm(HttpServletRequest request) {
+        HttpSession httpSession=request.getSession(true);
+        User user=(User)httpSession.getAttribute("user");
+        return user;
+    }
+
+    /**
+     * 删除我的帖子
+     * @param request
+     * @return 1为成功，0为失败，-1为未登陆
+     */
+    public int deleteMyPage(HttpServletRequest request) {
+        User user = userConfirm(request);
+        if (user == null) {
+            return -1;
+        }
+        /*
+            判断文章的tuid和用户的uid是否对应再进行删除操作
+         */
+
+        if (user.getUid()==Integer.parseInt(request.getParameter("tuid"))) {
+            TopicDao topicDao=new TopicDao();
+            int n=topicDao.delete(Integer.parseInt(request.getParameter("tid")));
+            return n;
+        }
+        return 0;
     }
 }

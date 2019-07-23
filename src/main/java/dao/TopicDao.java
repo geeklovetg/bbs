@@ -18,7 +18,7 @@ public class TopicDao {
      * @return 返回topic对象集合
      */
     public List<Topic> ShowAllTopic() {
-        String sql="select tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime from topic order by tpublishtime desc";
+        String sql="select tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime,tauthor from topic order by tpublishtime desc";
         try (Connection conn= DBUtil.getConnection()){
             PreparedStatement ps=conn.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
@@ -33,13 +33,42 @@ public class TopicDao {
         }
     }
 
+    public Topic showTopic(int tid) {
+        String sql="select tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime,tauthor from topic where tid=?";
+        try (Connection conn= DBUtil.getConnection()){
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setInt(1,tid);
+            ResultSet rs=ps.executeQuery();
+            Topic topic=new Topic();
+            while(rs.next()){
+                topic=row2topic(rs);
+            }
+            return topic;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int delete(int tid) {
+        String sql = "delete from topic where tid=?";
+        try (Connection conn = DBUtil.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,tid);
+            int n=ps.executeUpdate();
+            return n;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("删除失败");
+        }
+    }
 
     /**
      * 新增主题
      * @return
      */
-    public int CreateTopic(int tid, int tsid, int tuid, String ttopic, String tcontents, int treplycount, int tclickcount, Timestamp tpublishtime, Timestamp tmodifytime) {
-        String sql="insert into topic (tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime) values(null,?,?,?,?,?,?,?,?)";
+    public int CreateTopic(int tid, int tsid, int tuid, String ttopic, String tcontents, int treplycount, int tclickcount, Timestamp tpublishtime, Timestamp tmodifytime,String tauthor) {
+        String sql="insert into topic (tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime,tauthor) values(null,?,?,?,?,?,?,?,?,?)";
         try (Connection conn=DBUtil.getConnection()){
             PreparedStatement ps=conn.prepareStatement(sql);
             ps.setInt(1, tsid);
@@ -50,6 +79,7 @@ public class TopicDao {
             ps.setInt(6, tclickcount);
             ps.setTimestamp(7, tpublishtime);
             ps.setTimestamp(8, tmodifytime);
+            ps.setString(9, tauthor);
             int n=ps.executeUpdate();
             return n;
         } catch (Exception e) {
@@ -68,7 +98,8 @@ public class TopicDao {
         int tclickcount=rs.getInt("tclickcount");
         Timestamp tpublishtime=rs.getTimestamp("tpublishtime");
         Timestamp tmodifytime=rs.getTimestamp("tmodifytime");
-        return new Topic(tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime);
+        String tauthor = rs.getString("tauthor");
+        return new Topic(tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime,tauthor);
     }
 
     /**
@@ -76,7 +107,8 @@ public class TopicDao {
      * @return 返回帖子对象集合
      */
     public List<Topic> findAllByUid(int Uid) {
-        String sql="select tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime from topic where tuid=? order by tpublishtime desc";
+        String sql="select tid,tsid,tuid,ttopic,tcontents,treplycount,tclickcount,tpublishtime,tmodifytime,tauthor from topic where tuid=? order by tpublishtime desc";
+        System.out.println(Uid+"uid");
         try (Connection conn= DBUtil.getConnection()){
             PreparedStatement ps=conn.prepareStatement(sql);
             ps.setInt(1,Uid);

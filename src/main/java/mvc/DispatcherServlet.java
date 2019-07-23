@@ -55,7 +55,12 @@ public class DispatcherServlet extends HttpServlet {
                 return;
             }
             //转发,调用业务方法，根据业务方法的返回值转发到JSP
-            String path =  target + ".jsp";
+            String path;
+            if (target == "index") {
+                path = target + ".jsp";
+            } else {
+                path = "pages/"+target + ".jsp";
+            }
             request.getRequestDispatcher(path).forward(request,response);
         } catch (Exception e) {
             e.printStackTrace();

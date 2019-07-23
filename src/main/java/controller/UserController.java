@@ -41,11 +41,7 @@ public class UserController {
         return "register";
     }
 
-    @RequestMapping("/mypage.do")
-    public String myPage(HttpServletRequest request) {
-        UserService userService=new UserService();
-        List<Topic> list=userService.ShowMyPage(request);
-        request.setAttribute("list",list);
-        return "mypage";
-    }
+
+
+
 }

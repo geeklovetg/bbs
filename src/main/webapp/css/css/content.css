@@ -1,0 +1,197 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.content {
+	width: 1309px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.left_navigation {
+	margin: 20px;
+	width: 100px;
+	background-color: white;
+	border: 1px solid #DBDBDB;
+	box-sizing: border-box;
+	float: left;
+}
+
+.left_navigation>ul {
+	list-style-type: none;
+}
+
+.left_navigation>ul>li {
+	width: 98px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin-bottom: 1px;
+}
+
+.left_navigation>ul>li:HOVER {
+	background-color: #f44444;
+}
+
+.left_navigation>ul>li>a {
+	text-decoration: none;
+	width: 98px;
+	height: 40px;
+	line-height: 40px;
+	color: #707070;
+	display: block;
+	font-size: 14px;
+}
+
+.left_navigation>ul>li>a:HOVER {
+	color: white;
+}
+
+.right_content {
+	float: left;
+	margin: 20px 10px 20px 10px;
+	border: 1px solid #DBDBDB;
+	height: 595px;
+	padding: 10px;
+}
+
+.right_content>ul {
+	list-style-type: none;
+}
+
+.right_content>ul>li {
+	width: 700px;
+}
+
+.invitation {
+	width: 700px;
+	margin-bottom: 20px;
+}
+
+.invitation_title {
+	width: 700px;
+}
+
+.invitation_title>h2>a {
+	text-decoration: none;
+	color: #3d3d3d;
+}
+
+.invitation_title>h2>a:HOVER {
+	color: #f44444;
+}
+
+.invitation_content>p {
+	width: 700px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 14px;
+	color: #8a8a8a;
+}
+
+.invitation_bottom>span {
+	font-size: 14px;
+	color: #8a8a8a;
+	border-right: 0.5px #8a8a8a solid;
+	padding-right: 10px;
+}
+
+.invitation_bottom>div {
+	font-size: 14px;
+	color: #8a8a8a;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100px;
+}
+
+.page_number {
+	width: 700px;
+	height: 20px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.page_number>a {
+	text-decoration: none;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	display: inline-block;
+	color: #3d3d3d;
+}
+
+.page_number>a:HOVER {
+	color: #f44444;
+}
+
+.page_number>span {
+	color: #3d3d3d;
+	font-size: 16px;
+}
+
+.right_message {
+	width: 280px;
+	float: left;
+	display: inline-block;
+	margin: 20px;
+	border: 1px solid #DBDBDB;
+	padding: 10px;
+	position: fixed;
+}
+
+.right_message>h3 {
+	font-size: 16px;
+	color: #2c3033;
+	border-left: 3px red solid;
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+.right_message>div>ul {
+	list-style-type: none;
+}
+
+.right_message>div>ul>li {
+	width: 280px;
+	height: 48px;
+	margin-bottom: 10px;
+}
+
+.right_message>div>ul>li>a {
+	width: 64px;
+	height: 48px;
+	display: inline-block;
+}
+
+.right_message>div>ul>li>span {
+	height: 48px;
+	width: 200px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.right_message>div>ul>li>span>a {
+	text-decoration: none;
+	margin-left: 6px;
+	width: 200px;
+	height: 48px;
+	display: inline-block;
+	color: #3d3d3d;
+	font-size: 14px;
+}
+
+.right_message>div>ul>li>span>a:HOVER {
+	color: #f44444;
+}
+
+.right_message>div>ul>li>a>img {
+	width: 64px;
+	height: 48px;
+	border-radius: 5px;
+}

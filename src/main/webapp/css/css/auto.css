@@ -1,0 +1,5 @@
+@media screen and (min-width: 1366px) {
+  .content{margin: 0 auto;}
+  .right_message{position: static;}
+  .navigation_bars{width: 100%;}
+}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans>
-    <bean class="mvc.BizController"></bean>
     <bean class="controller.UserController"></bean>
     <bean class="controller.TopicController"></bean>
+    <bean class="controller.MyPageController"></bean>
 </beans>
